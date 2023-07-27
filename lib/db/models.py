@@ -52,4 +52,4 @@ class Appointment(Base):
     patient = relationship('Patient', back_populates='appointments')
 
     def __repr__(self):
-        return f'An appointment between doctor #{self.doctor_id} ({self.doctor.name}) and patient #{self.patient_id} ({self.patient.name}).  The appointment is at: {self.date_of_appt}'
+        return f'An appointment between doctor #{self.doctor.id} ({self.doctor.name}) and patient #{self.patient.id} ({self.patient.name}).  The appointment is at: {self.date_of_appt}'
