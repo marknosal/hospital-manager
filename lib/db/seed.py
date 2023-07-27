@@ -15,9 +15,9 @@ if __name__ == '__main__':
 
     fake = Faker()
 
-    session.query(Doctor).delete()
-    session.query(Patient).delete()
-    session.query(Appointment).delete()
+    # session.query(Doctor).delete()
+    # session.query(Patient).delete()
+    # session.query(Appointment).delete()
 
     doctors = []
     for i in range(20):

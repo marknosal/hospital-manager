@@ -1,8 +1,8 @@
-"""added Patient, Doctor, and Appointment classes and relationships
+"""created Doctor, Patient, Appointment tables and classes
 
-Revision ID: b6b2c13ccbe3
-Revises: 
-Create Date: 2023-07-26 03:32:34.067301
+Revision ID: ecada89d68e7
+Revises: 2faedb4ea433
+Create Date: 2023-07-27 06:46:46.702398
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'b6b2c13ccbe3'
-down_revision = None
+revision = 'ecada89d68e7'
+down_revision = '2faedb4ea433'
 branch_labels = None
 depends_on = None
 
