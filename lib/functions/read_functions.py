@@ -1,6 +1,7 @@
-from ..db.database import session
+from .delete_functions import delete_func_1
 from ..db.models import Doctor, Patient, Appointment
 from ..cli import main
+from ..db.database import session
 
 def print_table(table):
     [print(row) for row in table]
