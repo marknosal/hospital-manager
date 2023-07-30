@@ -1,5 +1,10 @@
 from ..db.database import session
 from ..db.models import Doctor, Patient, Appointment
+from ..cli import main
+
+def print_table(table):
+    [print(row) for row in table]
+    return [row for row in table]
 
 def read_func_1():
     print()
@@ -18,11 +23,11 @@ def read_func_1():
         print()
         results = list()
         if choice == 1:
-            [print(dr) for dr in session.query(Doctor).all()]
+            print_table(Doctor)
         elif choice == 2:
-            pass
+            print_table(Patient)
         elif choice == 3:
-            pass
+            print_table(Appointment)
         elif choice == 4:
             main()
         else:

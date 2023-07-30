@@ -9,11 +9,6 @@ from functions.update_functions import update_func_1 as update
 from functions.delete_functions import delete_func_1 as delete
 
 def main():
-    print()
-    print('Welcome to Phase 3 Project!!') 
-    print()
-    print('-' * 30)
-    print()
     choice = 0
     while choice != 5:
         print('*** Hospital Manager ***')
@@ -40,4 +35,9 @@ def main():
     
 
 if __name__ == '__main__':
+    print()
+    print('Welcome to Phase 3 Project!!') 
+    print()
+    print('-' * 30)
+    print()
     main()
