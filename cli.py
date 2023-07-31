@@ -1,27 +1,25 @@
-import os
-import sys
+from sys import exit
 
+from lib.db.database import session
+from lib.db.models import Doctor, Patient, Appointment
 
-from db.database import session
-from db.models import Doctor, Patient, Appointment
-
-from functions.read_functions import read_func_1 as read
-from functions.add_functions import add_func_1 as add
-from functions.update_functions import update_func_1 as update
-from functions.delete_functions import delete_func_1 as delete
+from lib.db.functions.read_functions import read_func_1 as read
+from lib.db.functions.add_functions import add_func_1 as add
+from lib.db.functions.update_functions import update_func_1 as update
+from lib.db.functions.delete_functions import delete_func_1 as delete
 
 def main():
     choice = 0
     while choice != 5:
         print('*** Hospital Manager ***')
         print('1) Look up records')
-        print('2) Add  add records')
+        print('2) Add record')
         print('3) Update records')
         print('4) Delete records')
         print('5) Quit')
         print()
         print('-' * 30)
-        choice = int(input("Ener choice number: "))
+        choice = int(input("Enter choice number: "))
 
         if choice == 1:
             read()
@@ -31,8 +29,11 @@ def main():
             update()
         elif choice == 4:
             delete()
-        else:
+        elif choice == 5:
             print('Closing application...')
+            exit()
+        else:
+            print('Please enter valid choice (integers 1 through 5)')
 
     
 

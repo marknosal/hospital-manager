@@ -3,6 +3,8 @@ from sqlalchemy import Column, Table, Integer, String, DateTime, MetaData, Forei
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.ext.associationproxy import association_proxy
+from datetime import datetime
+import pytz
 
 
 convention = {
@@ -23,7 +25,7 @@ class Doctor(Base):
     patients = association_proxy('appointments', 'patient', creator=lambda pt: Appointment(patient=pt))
 
     def __repr__(self):
-        return f'Doctor number {self.id} named {self.name}.'
+        return f'Doctor # {self.id} named {self.name}.'
 
 class Patient(Base):
     __tablename__ = 'patients'
@@ -36,7 +38,7 @@ class Patient(Base):
     doctors = association_proxy('appointments', 'doctor', creator=lambda dr: Appointment(doctor=dr))
 
     def __repr__(self):
-        return f'Patient number {self.id} named {self.name}.'
+        return f'Patient # {self.id} named {self.name} age {self.age}.'
 
 class Appointment(Base):
     __tablename__ = 'appointments'
@@ -52,4 +54,4 @@ class Appointment(Base):
     patient = relationship('Patient', back_populates='appointments')
 
     def __repr__(self):
-        return f'An appointment between doctor #{self.doctor.id} ({self.doctor.name}) and patient #{self.patient.id} ({self.patient.name}).  The appointment is at: {self.date_of_appt}'
+        return f'Appointment # {self.id} between doctor #{self.doctor.id} ({self.doctor.name}) and patient #{self.patient.id} ({self.patient.name}).  The appointment is at: {self.date_of_appt}'
