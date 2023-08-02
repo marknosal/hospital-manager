@@ -61,7 +61,7 @@ if __name__ == '__main__':
     session.query(Patient).delete()
     session.query(Appointment).delete()
 
-    doctors = create_doctors(20)
+    doctors = create_doctors(1)
     patients = create_patients(50)
     appointments = create_appointments(1500, doctors, patients)
 
