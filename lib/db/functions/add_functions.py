@@ -1,7 +1,7 @@
 from sys import exit
 from lib.db.database import session
 from lib.db.models import Doctor, Patient, Appointment
-from random import choice as rc
+
 from datetime import datetime, date
 import calendar
 
@@ -23,10 +23,10 @@ def add_func_1():
         print('5) Quit')
         print()
         print('-' * 30)
+        
         try:
             choice = int(input('Enter choice number: '))
             print()
-            results = list()
             if choice == 1:
                 add_func_2()
             elif choice == 2:
@@ -53,7 +53,16 @@ def add_func_2():
 # add patient
 def add_func_3():
     name = input('Enter name name of patient: ')
-    age = input('Enter patient\'s age: ')
+
+    while True:
+        age = input('Enter patient\'s age: ')
+        try:
+            if 0 <= int(age) <= 130:
+                break
+            print('Please enter a valid age in whole/positive digits (less than 135)')
+        except ValueError:
+            print('Invalid input.  Please enter numeric age in whole numbers')
+    
     new_patient = Patient(name=name, age=age)
     save(new_patient)
 

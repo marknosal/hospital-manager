@@ -1,7 +1,5 @@
 from sys import exit
 
-from lib.db.database import session
-from lib.db.models import Doctor, Patient, Appointment
 
 from lib.db.functions.read_functions import read_func_1 as read
 from lib.db.functions.add_functions import add_func_1 as add
