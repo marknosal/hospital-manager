@@ -4,7 +4,7 @@ from sqlalchemy.orm import relationship, backref
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.ext.associationproxy import association_proxy
 from datetime import datetime
-import pytz
+
 
 
 convention = {
@@ -55,3 +55,11 @@ class Appointment(Base):
 
     def __repr__(self):
         return f'Appointment # {self.id} between doctor #{self.doctor.id} ({self.doctor.name}) and patient #{self.patient.id} ({self.patient.name}).  The appointment is at: {self.date_of_appt}'
+    
+class Dict_Object():
+    def __init__(self, name='rando'):
+        self.name = name
+        self.my_dict = {'my_key': 'my_value'}
+
+    def __repr__(self):
+        return f'Dictionary Object named {self.name} that has a key: {list(self.my_dict.keys())[0]} and a value: {self.my_dict["my_key"]}'

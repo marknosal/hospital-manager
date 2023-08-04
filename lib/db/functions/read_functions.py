@@ -1,7 +1,9 @@
 # from cli import main
 from sys import exit
 from lib.db.database import session
-from lib.db.models import Doctor, Patient, Appointment
+from lib.db.models import Doctor, Patient, Appointment, Dict_Object
+from lib.db.functions.add_functions import buffer
+
 
 
 def print_table(table):
@@ -22,6 +24,7 @@ def read_func_1():
         print('3) Appointments')
         print('4) Return to previous menu')
         print('5) Quit')
+        print('    ...or type 999 to see a dictionary object')
         print()
         print('-' * 30)
         try:
@@ -39,6 +42,8 @@ def read_func_1():
             elif choice == 5:
                 print('Closing application...')
                 exit()
+            elif choice == 999:
+                buffer(Dict_Object())
             elif not 1 <= choice <= 5:
                 print('Please enter valid choice (integers 1 through 5)')
         except ValueError:
