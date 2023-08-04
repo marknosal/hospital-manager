@@ -1,1 +1,23 @@
 Generic single-database configuration.
+
+This is my Phase 3 Project
+
+Startup:
+1)Run: pipenvinstall; pipenv shell
+2)In the uppermost directory run: python cli.py
+
+This is a CLI so it is ran and viewed in the terminal. 
+The first output is the start of a CRUD operations for a hospital doctor/patient/appointment record system.
+You can select Look up records(read), Add record (create), Update record (update), and clear records (delete).
+Enter the coorisponding number and you will progress to the next screen.
+You can also enter 999 to view the dict type requirement
+You can return or quit to the previous 'page' at almost every 'page' by entering the corresponding number
+
+On the Read page you can view all instances of either the doctors, patients, or appointments tables by entering the matching number.
+
+On the create page you can add a record of any of the 3 listed models.  It will persist to the back end.  You can then go back to the read 'page' and verify.  I have built in verifications to prevent the user ffrom breaking the application.
+
+On the update page you can do the same thing.  Depending on the table accessed it will list all the instances and you select the one to edit by entering the corresponding id.  Appointments(because there are so many)  Have to be looked up by first and last name.  From there you can update either the date/time or doctor that is being seen
+
+on the delete page you can either clear entire tables, individual tables or clear specific rows
+

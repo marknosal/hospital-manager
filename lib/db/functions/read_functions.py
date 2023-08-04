@@ -9,7 +9,12 @@ from lib.db.functions.add_functions import buffer
 def print_table(table):
     query_result = session.query(table).all()
     print('----------------------------')
-    [print(row) for row in query_result]
+    for i, row in enumerate(query_result, 1):
+        print(row)
+        if i % 500 == 0:
+            input('Press ENTER to view more records...')
+    print('----------------------------')
+    print(f'These are your {table.__name__} records')
     print('----------------------------')
     return [row for row in query_result]
 
