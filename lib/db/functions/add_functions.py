@@ -90,7 +90,14 @@ def add_func_4():
             break
         print('Sorry, there are no available doctors for that date. Please try another time.\n')
 
-    appt_dr_id = input('Please enter the number of the doctor you would like to see: ')
+    while True:
+        try:
+            appt_dr_id = input('Please enter the number of the doctor you would like to see: ')
+            if int(appt_dr_id) in [dr.id for dr in avail_drs]:
+                break
+            print('Enter valid Doctor ID')
+        except ValueError:
+            print('Enter ID from list')
     pat_name = input('Please enter your first and last name: ')
     pat_age = input('Please enter your age: ')
     # if patient exists, but with a new age.  A new patient with same name but new age will be created
