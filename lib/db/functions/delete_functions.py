@@ -25,7 +25,7 @@ def delete_func_1():
             elif choice == 3:
                 print('Previous Menu')
                 break
-            elif choice == 3:
+            elif choice == 4:
                 exit()
             else:
                 print('Invalid selection, please try again\n')
