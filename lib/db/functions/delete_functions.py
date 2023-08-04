@@ -8,7 +8,8 @@ def delete_func_1():
         print('----------------------------')
         print('1) Clear table/class')
         print('2) Delete by attribute/column')
-        print('3) Quit application')
+        print('3) Return to previous menu')
+        print('4) Quit application')
         print('----------------------------')
         
         print()
@@ -16,10 +17,13 @@ def delete_func_1():
             choice = int(input('Enter your selection: '))
             if choice == 1:
                 delete_tables()
-                # break
+
             elif choice == 2:
                 delete_attributes()
-                # break
+
+            elif choice == 3:
+                print('Previous Menu')
+                break
             elif choice == 3:
                 exit()
             else:
@@ -43,13 +47,15 @@ def delete_tables():
                 print('All tables are cleared!!!')
                 break
         elif choice in table_names:
-            table = metadata.tables[choice]
-            session.query(table).delete()
-            session.commit()
-            print('----------------------------')
-            print(f'table "{choice}" has been cleared')
-            print('----------------------------')
-            break
+            confirm = input('Are you sure? This cannot be undone, Yes to confirm: ')
+            if confirm.lower() == 'yes':
+                table = metadata.tables[choice]
+                session.query(table).delete()
+                session.commit()
+                print('----------------------------')
+                print(f'table "{choice}" has been cleared')
+                print('----------------------------')
+                break
         else:
             print('Enter valid table name or "all"')
             print('----------------------------')

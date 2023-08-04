@@ -10,6 +10,12 @@ def save(row):
     session.add(row)
     session.commit()
 
+def buffer(some_string):
+    print('-' * 30)
+    print('-' * 30)
+    print(some_string)
+    print('-' * 30)
+
 def add_func_1():
     print()
     print('Which record would you like to add?')
@@ -49,6 +55,8 @@ def add_func_2():
     name = input('Please enter Doctor\'s name: ')
     new_dr = Doctor(name=name)
     save(new_dr)
+    print('-' * 30)
+    buffer('New Doctor saved!')
 
 # add patient
 def add_func_3():
@@ -65,6 +73,7 @@ def add_func_3():
     
     new_patient = Patient(name=name, age=age)
     save(new_patient)
+    buffer('New patient saved!')
 
 # add appointment
 def add_func_4():
@@ -89,7 +98,7 @@ def add_func_4():
     
     new_appt = Appointment(date_of_appt=appt_date, created_at=datetime.now(), doctor_id=appt_dr_id, patient_id=appt_pat_id)
     save(new_appt)
-    print(f'New appointment scheduled!  To confirm it is at {new_appt.date_of_appt.hour}:{new_appt.date_of_appt.minute} on day {new_appt.date_of_appt.day} of {calendar.month_name[new_appt.date_of_appt.month]}, {new_appt.date_of_appt.year}')
+    buffer(f'New appointment scheduled!  To confirm it is at {new_appt.date_of_appt.hour}:{new_appt.date_of_appt.minute} on day {new_appt.date_of_appt.day} of {calendar.month_name[new_appt.date_of_appt.month]}, {new_appt.date_of_appt.year}')
 
 def enter_new_appt():
     # check year

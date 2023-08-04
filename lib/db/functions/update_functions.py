@@ -3,6 +3,7 @@ from lib.db.database import session
 from lib.db.models import Doctor, Patient, Appointment
 from sqlalchemy import desc
 from lib.db.functions.add_functions import enter_new_appt, avail_drs_on_date, verify_appt_id
+from lib.db.functions.add_functions import buffer
 
 def update_func_1():
     print()
@@ -61,9 +62,7 @@ def update_func_2():
     if selected_dr:
         selected_dr.name = new_dr_name
         session.commit()
-        print('Doctor\'s record updated successfully!')
-    else:
-        print(f'Doctor with selected id ({selected_dr_id}) not found...')
+        buffer('Doctor\'s record updated successfully!')
 
 # update Patient
 def update_func_3():
@@ -75,13 +74,13 @@ def update_func_3():
         selected_pat.name = new_pat_name
         selected_pat.age = new_pat_age
         session.commit()
-        print('Patient\s record updated successfully!')
+        buffer('Patient\s record updated successfully!')
 
 
 # update Appointment
 
 def update_func_4():
-    print('There are quite a bit of appointment records...\n')
+    buffer('There are quite a bit of appointment records...\n')
     update_func_6()
 
 
@@ -98,11 +97,12 @@ def update_func_6():
     [print(appt) for appt in matching_appts]
     selected_appt_id = input('Please enter the ID of the appointment you whish to update: ')
     selected_appt = session.query(Appointment).filter_by(id=selected_appt_id).first()
-    print('Here is the appointment you selected to update:')
-    print(selected_appt)
+    buffer('Here is the appointment you selected to update:')
+    buffer(selected_appt)
     choice = 0
     while choice != 4:
         print('Would you like to change your Doctor or reschedule?')
+        print('-' * 30)
         print('1) Doctor')
         print('2) Reschedule')
         print('3) Return to previous menu')
@@ -128,12 +128,12 @@ def update_func_6():
                         print('Enter type: Integer')
                 selected_appt.doctor_id = int(new_dr_id)
                 session.commit()
-                print('Reschedule Complete')
+                buffer('Reschedule Complete')
 
             elif choice == 2:
                 selected_appt.date_of_appt = enter_new_appt()
                 session.commit()
-                print('Reschedule Complete')
+                buffer('Reschedule Complete')
 
             elif choice == 3:
                 print('Previous menu...')

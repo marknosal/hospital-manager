@@ -3,6 +3,7 @@ from sys import exit
 from lib.db.database import session
 from lib.db.models import Doctor, Patient, Appointment
 
+
 def print_table(table):
     query_result = session.query(table).all()
     print('----------------------------')
