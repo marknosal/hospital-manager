@@ -1,5 +1,6 @@
 from sys import exit
 
+from lib.db.database import session
 
 from lib.db.functions.read_functions import read_func_1 as read
 from lib.db.functions.add_functions import add_func_1 as add
@@ -13,7 +14,7 @@ def main():
         print('1) Look up records')
         print('2) Add record')
         print('3) Update records')
-        print('4) Delete records')
+        print('4) Clear records')
         print('5) Quit')
         print()
         print('-' * 30)
@@ -42,3 +43,4 @@ if __name__ == '__main__':
     print('-' * 30)
     print()
     main()
+    session.close()
