@@ -18,21 +18,23 @@ def main():
         print('5) Quit')
         print()
         print('-' * 30)
-        choice = int(input("Enter choice number: "))
-
-        if choice == 1:
-            read()
-        elif choice == 2:
-            add()
-        elif choice == 3:
-            update()
-        elif choice == 4:
-            delete()
-        elif choice == 5:
-            print('Closing application...')
-            exit()
-        else:
-            print('Please enter valid choice (integers 1 through 5)')
+        try:
+            choice = int(input("Enter choice number: "))
+            if choice == 1:
+                read()
+            elif choice == 2:
+                add()
+            elif choice == 3:
+                update()
+            elif choice == 4:
+                delete()
+            elif choice == 5:
+                print('Closing application...')
+                exit()
+            else:
+                print('Please enter valid choice (integers 1 through 5)')
+        except ValueError:
+            print('Try again')
 
     
 

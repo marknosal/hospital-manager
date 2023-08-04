@@ -73,31 +73,14 @@ def delete_attributes():
             delete_from_appointments()
             break
         else:
-            print('Select from valid table names') 
+            print('Select from valid table names')
+            print('----------------------------') 
 
 def delete_from_doctors():
     doctors = session.query(Doctor).all()
     [print(dr) for dr in doctors]
     print('----------------------------')
-
-    while True:
-        selection = input('Input ID of doctor you wish to remove from database: ')
-        try:
-            selection = int(selection)
-            if selection in [dr.id for dr in doctors]:
-                confirm = input('This will clear doctor record and any appointments they have/had. Proceed?  : ')
-                if confirm.lower() == 'yes':
-                    deleted_doctor = session.query(Doctor).get(selection)
-                    session.delete(deleted_doctor)
-                    session.commit()
-                    print('Doctor and all their associated apppointments have been cleared!')
-                else:
-                    print('Doctor data clearing...ABORTED')
-                break
-            else:
-                print('Invalid ID entered.  Please enter valid ID from provided list.')
-        except ValueError:
-            print('Invalid input.  Need valid ID as whole number')
+    delete_specific_table(Doctor, doctors)
 
 
 
@@ -105,25 +88,40 @@ def delete_from_patients():
     patients = session.query(Patient).all()
     [print(pat) for pat in patients]
     print('----------------------------')
+    delete_specific_table(Patient, patients)
+
+
+def delete_from_appointments():
+    appointments = session.query(Appointment).all()
+    for i, appt in enumerate(appointments, 1):
+        print(appt)
+        if i % 100 == 0:
+            input("Press Enter to continue...")
+    print('----------------------------')
+    print('Now that you have seen the multitude of appointments')
+    delete_specific_table(Appointment, appointments)
+
+def delete_specific_table(model_name, all_rows):
 
     while True:
-        selection = input('Input ID of patient you wish to remove from database: ')
+        selection = input(f'Input ID of {model_name.__name__} you wish to delete: ')
         try:
             selection = int(selection)
-            if selection in [pat.id for pat in patients]:
-                confirm = input('This will clear patient record and any appointments they had/will have. Proceed?  : ')
+            if selection in [row.id for row in all_rows]:
+                confirm = input(f'This will clear {model_name.__name__} record. Proceed?  : ')
                 if confirm.lower() == 'yes':
-                    deleted_patient = session.query(Patient).get(selection)
-                    session.delete(deleted_patient)
+                    deleted_row = session.query(model_name).get(selection)
+                    session.delete(deleted_row)
                     session.commit()
-                    print('Patient and all their associated apppointments have been cleared!')
+                    print(f'{model_name.__name__} cleared!')
                 else:
-                    print('Patient data clearing...ABORTED')
+                    print('----------------------------')
+                    print('----------------------------')
+                    print(f'{model_name.__name__} data clearing...ABORTED')
+                    print('----------------------------')
+                    print('----------------------------')
                 break
             else:
                 print('Invalid ID entered.  Please enter valid ID from provided list.')
         except ValueError:
             print('Invalid input.  Need valid ID as whole number')
-
-def delete_from_appointments():
-    pass

@@ -5,7 +5,9 @@ from lib.db.models import Doctor, Patient, Appointment
 
 def print_table(table):
     query_result = session.query(table).all()
+    print('----------------------------')
     [print(row) for row in query_result]
+    print('----------------------------')
     return [row for row in query_result]
 
 def read_func_1():
