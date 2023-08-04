@@ -94,7 +94,7 @@ def add_func_4():
     pat_name = input('Please enter your first and last name: ')
     pat_age = input('Please enter your age: ')
     # if patient exists, but with a new age.  A new patient with same name but new age will be created
-    appt_pat_id = verify_appt_id(pat_name, pat_age)
+    appt_pat_id = generate_pat_id(pat_name, pat_age)
     
     new_appt = Appointment(date_of_appt=appt_date, created_at=datetime.now(), doctor_id=appt_dr_id, patient_id=appt_pat_id)
     save(new_appt)
@@ -147,7 +147,7 @@ def enter_new_appt():
 
     return datetime(year, month, day, hour, minute)
 
-def verify_appt_id(name, age):
+def generate_pat_id(name, age):
     result = session.query(Patient).filter_by(name=name, age=age).first()
     if result:
         return result.id
