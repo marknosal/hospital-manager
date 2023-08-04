@@ -112,7 +112,7 @@ def enter_new_appt():
     # check month
     while True:
         month = input('Enter month of appointment (MM): ')
-        if month in {'1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'}:
+        if month.isdigit() and 1 <= int(month) <= 12:
             month = int(month)
             break
         print('Please enter a valid month (1 to 12 ) in the format \'MM\'\n')

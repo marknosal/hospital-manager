@@ -2,7 +2,7 @@ from sys import exit
 from lib.db.database import session
 from lib.db.models import Doctor, Patient, Appointment
 from sqlalchemy import desc
-from lib.db.functions.add_functions import enter_new_appt, avail_drs_on_date, verify_appt_id
+from lib.db.functions.add_functions import enter_new_appt, avail_drs_on_date, generate_pat_id
 from lib.db.functions.add_functions import buffer
 
 def update_func_1():
